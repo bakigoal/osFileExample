@@ -54,6 +54,23 @@ func TestFileOs(t *testing.T) {
 	fmt.Printf("O_WRONLY | O_APPEND: \t%012b\n", os.O_WRONLY|os.O_APPEND)
 }
 
+func TestPermissions(t *testing.T) {
+	perms := []int{
+		0000,
+		0111,
+		0222,
+		0333,
+		0444,
+		0555,
+		0666,
+		0777,
+	}
+
+	for _, perm := range perms {
+		fmt.Printf("%04o \t%09b \t%s\n", perm, perm, os.FileMode(perm))
+	}
+}
+
 type Binary struct {
 	decimal  int
 	expected string
