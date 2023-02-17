@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	file := openFile("my-file.txt", os.O_WRONLY | os.O_APPEND, os.FileMode(0600))
+	file := openFile("my-file.txt", os.O_WRONLY|os.O_CREATE|os.O_APPEND, os.FileMode(0600))
 	defer closeFile(file)
 	writeToFile(file, "\nAmazing!\n")
 }
@@ -32,4 +32,3 @@ func check(err error) {
 		log.Fatal(err)
 	}
 }
-
